@@ -41,7 +41,7 @@ public class FileReader {
             }
             return content.toString();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
 
     }
