@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class FileReader {
 
-    public Profile getDataFromFile(File file) throws IOException {
+    public Profile getDataFromFile(File file) {
         return convertFileContentToProfile(extractContent(file));
     }
 
@@ -25,7 +25,7 @@ public class FileReader {
         return profile;
     }
 
-    private String extractContent(File file) throws IOException {
+    private String extractContent(File file) {
         try(RandomAccessFile aFile = new RandomAccessFile(file, "r")) {
             StringBuilder content = new StringBuilder();
             FileChannel inChannel = aFile.getChannel();
@@ -41,9 +41,9 @@ public class FileReader {
             }
             return content.toString();
         } catch (IOException e) {
-            throw e;
+            e.printStackTrace();
         }
-
+        return null;
     }
 
     private Map<String, String> getKeyValue(String content) {
